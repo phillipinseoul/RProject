@@ -10,7 +10,9 @@ library(readxl)
 library(tidyverse)
 library(gridExtra)
 
-setwd("/Users/phillip/Desktop/CS492_R/RProject")
+# setwd("/Users/phillip/Desktop/CS492_R/RProject")
+setwd("/home/yuseung/Desktop/RProject")
+
 
 # Load subway dataset
 subway2019 <- read.csv("2019_subway.csv", header = T)
@@ -58,7 +60,6 @@ period_data <- merge(data2019, data2020, by="station")
 period_data_final <- period_data %>%
   mutate(period1 = period1_2020 / period1_2019,
          period2 = period2_2020 / period2_2019)
-View(period_data_final)
 
 period_data_final$periodType1 <- ifelse(period_data_final$period1 >= 0.9, "Type 1: Over 0.9", ifelse(
   period_data_final$period1 >= 0.8, "Type 2: 0.8 to 0.9", ifelse(
